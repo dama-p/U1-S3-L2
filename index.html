@@ -102,11 +102,23 @@
        Scrivi una funzione che cambi il testo dei p figli di un div
       */
 
-      // const changePcontent = function (testo) {}
+    
 
-      let allPs = document.querySelectorAll("div p");
-      allPs = Array.from(allPs);
-      console.log(allPs.map((p) => (p.innerText = "Ecco il testo modificato per ogni p figlio di un div")));
+      // let allPs = document.querySelectorAll("div p");
+      // allPs = Array.from(allPs);
+     //  console.log(allPs.map((p) => (p.innerText = "Ecco il testo modificato per ogni p figlio di un div")));
+
+      // OPPURE CON UN FOR
+
+      const changePcontent = function(newstring) {
+        const allPar = document.querySelectorAll("div p");
+        for (let i = 0; i < allPar.length; i++) {
+          const p = allPar[i];
+          p.innerText = newstring;
+        }
+      }
+
+      changePcontent("Prova nuova stringa cambiata");
 
       /* ESERCIZIO 4
        Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
@@ -179,7 +191,13 @@
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
 
-      const makeItClickable = function () {};
+      /* const makeItClickable = function () {
+        const title = document.querySelector("h1");
+        title.onclick = function () {
+          title.
+        };
+      };
+   */
 
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
