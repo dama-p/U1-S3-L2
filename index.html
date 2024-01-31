@@ -100,9 +100,7 @@
 
       /* ESERCIZIO 3
        Scrivi una funzione che cambi il testo dei p figli di un div
-      */
-
-    
+      */    
 
       // let allPs = document.querySelectorAll("div p");
       // allPs = Array.from(allPs);
@@ -191,26 +189,75 @@
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
 
-      /* const makeItClickable = function () {
+      const makeItClickable = function () {
+        // 1) selezioniamo e definiamo l'elemento che ci interessa nella pagina
         const title = document.querySelector("h1");
+        // 2) Agganciamo un trigger (evento) di click
         title.onclick = function () {
-          title.
+          // 3) Funzione che verrà eseguita al momento del click
+          title.innerText = title.innerText.slice(0, -1);
         };
+        console.dir(title);
       };
-   */
+
+      // 4) Bisogna richiamare la funzione per poter applicare il trigger
+      makeItClickable();
+   
 
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
       */
 
-      const revealFooterLink = function () {};
+      const revealFooterLink = function () {
+        const footer = document.querySelector("footer");
+        footer.onclick = function () {
+          // prendo l'elemento che ancora non ho, vale a dire l'url
+          const link = document.querySelector("footer a");
+          // oppure dato che abbbiamo già trovato footer
+          // const link = footer.querySelector("a")
+          alert(link.href)
+          //oppure con i backtick per inserire valori dinamici:
+          // alert(`L'URL del link del footer è ${link.href}`)
+        }
+
+      };
+
+      revealFooterLink();
 
       /* ESERCIZIO 11
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
 
-      const generateTable = function () {};
+      const generateTable = function () {
+        const tableContainer = document.getElementById("tableArea")
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tr = document.createElement("tr");
+        // const th = document.createElement("th"); <- ne servivano 4, possiamo creare invece un Array e ciclarlo
+        const hElements = ["immagine", "nome prodotto", "quantità", "prezzo"];
+        for (let i=0; i<hElements.length; i++) {
+          const th = document.createElement("th");
+          th.innerText = hElements[i] // ogni th avrà al suo interno uno degli elementi dell'array
+          tr.appendChild(th) // siamo all'interno del ciclo quindi questo accadrà  per ogni elemento, ogni tr riceverà un th
+
+
+          // oppure con un forEach
+        /*   hElements.forEach(elementStr => {
+            const th = document.createElement("th");
+            th.innerText = elementStr
+            tr.appendChild(th);
+          }) */
+          
+        }
+        
+        thead.appendChild(tr);
+        table.appendChild(thead);
+        tableContainer.appendChild(table);
+
+      };
+
+      generateTable();
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
